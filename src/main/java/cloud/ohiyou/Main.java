@@ -27,6 +27,7 @@ public class Main {
     private static final String COOKIE = System.getenv("COOKIE");
 //    private static final String COOKIE = cloud.ohiyou.test.TestEnum.COOKIE.getValue();
     private static final String DINGTALK_WEBHOOK = System.getenv("DINGTALK_WEBHOOK"); // 钉钉机器人 access_token 的值
+    private static final String DINGTALK_SEC = System.getenv("DINGTALK_SEC"); // 钉钉机器人 access_token 的值
     private static final String WXWORK_WEBHOOK = System.getenv("WXWORK_WEBHOOK"); // 企业微信机器人 key 的值
     private static final String SERVER_CHAN_KEY = System.getenv("SERVER_CHAN");
     private static final String TG_CHAT_ID = System.getenv("TG_CHAT_ID");
@@ -125,7 +126,7 @@ public class Main {
         // 推送
         publishWechat(SERVER_CHAN_KEY, title,messageBuilder.toString());
         publishTelegramBot(TG_CHAT_ID, TG_BOT_TOKEN, title + "\n" + messageBuilder.toString());
-        DingTalkUtils.pushBotMessage(DINGTALK_WEBHOOK, title, messageBuilder.toString(), "", "markdown");
+        DingTalkUtils.pushBotMessage(DINGTALK_WEBHOOK,DINGTALK_SEC, title, messageBuilder.toString(), "", "markdown");
         WeChatWorkUtils.pushBotMessage(WXWORK_WEBHOOK, title, messageBuilder.toString(), "markdown");
     }
 
