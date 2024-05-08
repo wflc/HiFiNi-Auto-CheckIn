@@ -30,7 +30,7 @@ public class DingTalkUtils {
      * @param userIDs (可选)用户的 userId 信息[仅限钉钉内部群使用]/you need @ group user's userId
      * @param msgType (必选其一)text/markdown
      */
-    public static void pushBotMessage(String customRobotToken, String messageTitle, String messageText, String userIDs, String msgType){
+    public static void pushBotMessage(String customRobotToken, String customSec,String messageTitle, String messageText, String userIDs, String msgType){
         try {
             if (customRobotToken == null || "".equals(customRobotToken)) {
                 System.out.println("DINGTALK_WEBHOOK 环境变量未设置");
@@ -39,7 +39,7 @@ public class DingTalkUtils {
             if (msgType == null) {msgType="markdown";}
             Long timestamp = System.currentTimeMillis();
 //            System.out.println(timestamp); // 时间戳
-            String secret = "messageKey"; // 安全设置，加签密钥。
+            String secret =customSec; // 安全设置，加签密钥。
             String stringToSign = timestamp + "\n" + secret;
             Mac mac = Mac.getInstance("HmacSHA256");
             mac.init(new SecretKeySpec(secret.getBytes("UTF-8"), "HmacSHA256"));
