@@ -216,6 +216,7 @@ public class Main {
                 .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/")
                 .build();
         try (Response response = client.newCall(request).execute()) {
+            log("response.isSuccessful"+response.isSuccessful());
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
             return readResponse(response);
         } catch (IOException e) {
@@ -266,6 +267,7 @@ public class Main {
         while ((readLine = reader.readLine()) != null) {
             result.append(readLine);
         }
+        log("readResponse"+result.toString());
         return result.toString();
     }
 
