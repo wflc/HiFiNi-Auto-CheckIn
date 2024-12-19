@@ -277,6 +277,7 @@ public class Main {
         while ((readLine = reader.readLine()) != null) {
             result.append(readLine);
         }
+        log("readResponse:"+result.toString());
         return result.toString();
     }
 
